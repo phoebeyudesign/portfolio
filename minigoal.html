@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MiniGoal · Phoebe Yu</title>
     <meta name="description" content="A one-day hackathon project exploring generative UI for mini fitness goals. A case study by Phoebe Yu." />
-    <link rel="icon" type="image/png" href="AnalyticsImage/favicon.png" />
+    <link rel="icon" type="image/png" href="Homepage/src/assets/phoebe-avatar.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -1288,17 +1288,17 @@ footer > span {
   <body>
     <div class="site">
       <header class="site-header">
-        <a href="https://phoebeyudesign.github.io/portfolio/#top" class="avatar-link" aria-label="Phoebe Yu, home">
-          <img src="AnalyticsImage/phoebe-avatar.png" alt="" />
+        <a href="index.html#top" class="avatar-link" aria-label="Phoebe Yu, home">
+          <img src="Homepage/src/assets/phoebe-avatar.png" alt="" />
         </a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Open menu">
           <span></span>
           <span></span>
         </button>
         <nav id="main-menu" aria-label="Main navigation">
-          <a href="https://phoebeyudesign.github.io/portfolio/#top">Home</a>
+          <a href="index.html#top">Home</a>
           <a href="snyk-analytics.html">Analytics</a>
-          <a href="https://phoebeyudesign.github.io/portfolio/#learn">Learn</a>
+          <a href="snyk-learn.html">Learn</a>
           <a href="myobservatory.html">MyObservatory</a>
         </nav>
       </header>
@@ -1659,14 +1659,9 @@ footer > span {
     var m = v.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/);
     var id = m ? m[1] : (/^[\w-]{11}$/.test(v) ? v : "");
     if (!id) return; // keeps the "Video coming soon" placeholder
-    var f = document.createElement("iframe");
-    f.src = "https://www.youtube.com/embed/" + id + "?rel=0";
-    f.title = box.getAttribute("title") || "Video";
-    f.loading = "lazy";
-    f.allow = "autoplay; encrypted-media";
-    f.allowFullscreen = true;
-    box.innerHTML = "";
-    box.appendChild(f);
+    box.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id +
+      '?rel=0" title="' + (box.getAttribute("title") || "Video") +
+      '" loading="lazy" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
   });
 })();
     </script>

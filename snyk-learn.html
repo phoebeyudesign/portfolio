@@ -1,16 +1,1594 @@
 <!doctype html>
-<html lang="<!-- figma:lang -->">
+<html lang="en">
   <head>
-    <!-- figma:head-start -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><!-- figma:title --></title>
-    <!-- figma:head-end -->
+    <title>Snyk Learn · Phoebe Yu</title>
+    <meta name="description" content="Turning learning into an operational security product. A Snyk Learn case study by Phoebe Yu." />
+    <link rel="icon" type="image/png" href="Homepage/src/assets/phoebe-avatar.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+/* Reset (stands in for Tailwind Preflight used by the Figma Make template) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  background: #171713;
+}
+
+body {
+  color: #171713;
+  background: #f3f0e7;
+  font-family: Manrope, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, p, blockquote, figure, dl, dd {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+img,
+svg,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  color: #171713;
+  background: #ff0;
+}
+
+:root {
+  --ink: #171713;
+  --cream: #f3f0e7;
+  --yellow: #ff0;
+  --lime: #c9f459;
+  --lavender: #c9baff;
+  --coral: #ff765f;
+  --line: 2px solid var(--ink);
+  --rule: color-mix(in srgb, var(--ink) 20%, transparent);
+}
+
+.site {
+  min-width: 320px;
+  overflow: clip;
+}
+
+.site-header {
+  z-index: 90;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 clamp(22px, 4vw, 64px);
+  color: #222;
+  background: #fff;
+  box-shadow: 1px 1px 3px #ddd;
+}
+
+.avatar-link,
+.avatar-link img {
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-left: 18px;
+}
+
+.site-header nav a {
+  opacity: 0.7;
+  color: #222;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 15px 16px;
+  font-size: 12px;
+  font-weight: 300;
+  transition:
+    opacity 0.2s,
+    transform 0.2s,
+    color 0.2s;
+}
+
+.site-header nav a:hover {
+  opacity: 1;
+  color: #8f8f8f;
+  transform: translateY(-2px);
+}
+
+.site-header nav a.active {
+  opacity: 1;
+  color: #222;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.hero {
+  position: relative;
+  min-height: 94svh;
+  color: var(--ink);
+  background: var(--lavender);
+  padding: 73px clamp(24px, 5vw, 76px) 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero__eyebrow {
+  display: flex;
+  justify-content: space-between;
+  max-width: 760px;
+  font:
+    400 12px/1.2 Manrope,
+    sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.hero__title {
+  z-index: 1;
+  position: relative;
+  margin-top: auto;
+  margin-bottom: 7vh;
+}
+
+.hero h1 {
+  max-width: 1160px;
+  font:
+    400 clamp(52px, 7.1vw, 112px) / 0.98 Manrope,
+    sans-serif;
+  letter-spacing: -0.055em;
+}
+
+.hero h1 em {
+  color: var(--ink);
+  font-style: normal;
+}
+
+.statement h2 em {
+  color: var(--lime);
+  font-style: normal;
+}
+
+.hero__title > p {
+  width: min(520px, 100%);
+  margin-top: 42px;
+  margin-left: auto;
+  color: color-mix(in srgb, var(--ink) 68%, transparent);
+  font-size: clamp(17px, 1.4vw, 21px);
+  line-height: 1.55;
+}
+
+.hero__footer {
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.round-link {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  background: var(--lime);
+  border-radius: 50%;
+  transform: rotate(90deg);
+  transition: transform 180ms ease;
+}
+
+.round-link:hover {
+  transform: rotate(90deg) scale(1.08);
+}
+
+.arrow {
+  width: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.arrow.diagonal {
+  transform: rotate(-45deg);
+}
+
+.hero__mark {
+  color: color-mix(in srgb, var(--ink) 7%, transparent);
+  font:
+    600 clamp(42px, 7vw, 100px) / 0.7 Manrope,
+    sans-serif;
+  letter-spacing: -0.05em;
+}
+
+.reveal {
+  animation: enter 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.reveal--delay {
+  animation-delay: 120ms;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+.overview {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  padding: clamp(80px, 11vw, 164px) clamp(24px, 8vw, 140px);
+  background-color: #fff;
+  background-image: radial-gradient(#d9d9d4 1.25px, transparent 1.25px);
+  background-size: 20px 20px;
+}
+
+.kicker,
+.overview dt {
+  margin-bottom: 24px;
+  font:
+    500 11px/1.2 Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.overview h2 {
+  max-width: 720px;
+  font:
+    400 clamp(34px, 4vw, 62px) / 1.12 Manrope,
+    sans-serif;
+  letter-spacing: -0.045em;
+}
+
+.overview__copy {
+  padding-top: 42px;
+  color: #535353;
+  font-size: 19px;
+}
+
+.overview__copy p + p {
+  margin-top: 24px;
+}
+
+.meta {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 38px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+
+.overview dt {
+  margin-bottom: 12px;
+  color: #777;
+}
+
+.overview dd {
+  max-width: 230px;
+  font:
+    400 15px/1.5 Manrope,
+    sans-serif;
+}
+
+.contents {
+  position: relative;
+  background: var(--yellow);
+  padding: 35px clamp(24px, 8vw, 140px);
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.contents > span {
+  flex: none;
+  font:
+    500 11px/1.5 Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.contents > div {
+  width: min(780px, 100%);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px 32px;
+}
+
+.contents a {
+  display: flex;
+  gap: 12px;
+  font:
+    400 13px/1.3 Manrope,
+    sans-serif;
+}
+
+.contents a span {
+  opacity: 0.45;
+}
+
+.statement {
+  min-height: 680px;
+  color: white;
+  background: var(--ink);
+  padding: clamp(80px, 10vw, 150px) clamp(24px, 8vw, 140px);
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-content: center;
+  gap: 45px;
+}
+
+.statement > p:first-child {
+  color: var(--lime);
+  font:
+    500 11px/1.5 Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.statement h2 {
+  max-width: 1040px;
+  font:
+    400 clamp(38px, 5vw, 74px) / 1.1 Manrope,
+    sans-serif;
+  letter-spacing: -0.045em;
+}
+
+.statement__line {
+  grid-column: 2;
+  height: 1px;
+  margin-top: 28px;
+  background: rgba(255, 255, 255, 0.23);
+}
+
+.statement .statement__detail {
+  grid-column: 2;
+  max-width: 660px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 19px;
+}
+
+.narrative {
+  background-color: #fff;
+  background-image: radial-gradient(#d9d9d4 1.25px, transparent 1.25px);
+  background-size: 20px 20px;
+}
+
+.chapter {
+  width: min(1240px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: clamp(90px, 12vw, 170px) 0;
+  display: grid;
+  grid-template-columns: minmax(170px, 0.4fr) minmax(0, 1.6fr);
+  gap: clamp(40px, 8vw, 120px);
+  border-bottom: 1px solid var(--rule);
+  scroll-margin-top: 30px;
+}
+
+.chapter__label {
+  height: fit-content;
+  position: sticky;
+  top: 40px;
+}
+
+.chapter__label span {
+  display: block;
+  margin-bottom: 12px;
+  color: #8d8d8d;
+  font:
+    300 42px/1 Manrope,
+    sans-serif;
+}
+
+.chapter__label p {
+  font:
+    500 11px/1.4 Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.chapter__body {
+  max-width: 880px;
+}
+
+.chapter h2 {
+  max-width: 820px;
+  margin-bottom: 42px;
+  font:
+    400 clamp(36px, 4.3vw, 64px) / 1.08 Manrope,
+    sans-serif;
+  letter-spacing: -0.045em;
+}
+
+.chapter__body > p {
+  max-width: 720px;
+  color: #555;
+  font-size: 18px;
+}
+
+.chapter__body > p + p {
+  margin-top: 24px;
+}
+
+.chapter__body > .lead {
+  color: var(--ink);
+  font:
+    400 clamp(21px, 2vw, 28px) / 1.5 Manrope,
+    sans-serif;
+  letter-spacing: -0.018em;
+}
+
+.problem-grid {
+  margin: 58px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.problem-grid > div {
+  padding: 25px 24px 32px 0;
+}
+
+.problem-grid > div + div {
+  padding-left: 24px;
+  border-left: 1px solid var(--rule);
+}
+
+.problem-grid span {
+  color: #888;
+  font:
+    400 11px Manrope,
+    sans-serif;
+}
+
+.problem-grid h3 {
+  margin: 42px 0 8px;
+  font:
+    500 18px Manrope,
+    sans-serif;
+}
+
+.problem-grid p {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+blockquote {
+  margin-top: 70px;
+  padding: 40px;
+  color: white;
+  background: var(--ink);
+  border-radius: 22px;
+  overflow: hidden;
+  font:
+    400 clamp(28px, 3vw, 45px) / 1.25 Manrope,
+    sans-serif;
+  letter-spacing: -0.035em;
+}
+
+blockquote::before {
+  content: "→";
+  display: block;
+  margin-bottom: 42px;
+  color: var(--lime);
+  font-size: 34px;
+}
+
+blockquote span {
+  display: block;
+  color: var(--lime);
+}
+
+.figure {
+  margin: 72px 0 20px;
+}
+
+.figure > a {
+  position: relative;
+  display: block;
+  padding: clamp(15px, 2.5vw, 34px);
+  background: var(--cream);
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.figure img {
+  width: 100%;
+  height: auto;
+  transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.figure__open {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 13px;
+  color: white;
+  background: var(--ink);
+  font:
+    400 10px Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: 180ms ease;
+}
+
+.figure__open .arrow {
+  width: 15px;
+}
+
+.figure a:hover img {
+  transform: scale(1.012);
+}
+
+.figure a:hover .figure__open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.figure figcaption {
+  margin-top: 14px;
+  display: flex;
+  gap: 18px;
+  color: #676767;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.figure figcaption span {
+  color: var(--ink);
+  flex: none;
+  font:
+    500 10px/1.8 Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.figure-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.figure-pair .figure {
+  margin-top: 28px;
+}
+
+.figure-pair .figure > a {
+  height: 410px;
+  display: flex;
+  align-items: center;
+}
+
+.decision {
+  margin: 64px 0;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  color: white;
+  background: var(--ink);
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.decision > div {
+  padding: 45px;
+}
+
+.decision .kicker {
+  color: var(--lime);
+}
+
+.decision h3 {
+  font:
+    400 28px/1.3 Manrope,
+    sans-serif;
+  letter-spacing: -0.025em;
+}
+
+.decision ul {
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.decision li {
+  padding: 22px 26px;
+  font-size: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.decision li:last-child {
+  border: 0;
+}
+
+.decision li span {
+  display: inline-block;
+  width: 78px;
+  margin-right: 12px;
+  color: var(--lime);
+  font:
+    500 9px Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.decision li.muted {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.decision li.muted span {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.pullquote {
+  margin: 64px 0;
+  padding: 45px;
+  background: var(--lime);
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.pullquote span {
+  font:
+    500 10px Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.pullquote p {
+  max-width: 680px;
+  margin-top: 50px;
+  font:
+    400 clamp(25px, 3vw, 39px) / 1.25 Manrope,
+    sans-serif;
+  letter-spacing: -0.035em;
+}
+
+.chapter__body .subhead {
+  max-width: 700px;
+  margin: 90px 0 24px;
+  font:
+    400 clamp(27px, 3vw, 40px) / 1.2 Manrope,
+    sans-serif;
+  letter-spacing: -0.035em;
+}
+
+.impact {
+  color: var(--ink);
+  background: var(--lavender);
+  padding: clamp(90px, 11vw, 160px) clamp(24px, 8vw, 140px);
+  scroll-margin-top: 0;
+}
+
+.impact__heading {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 30px;
+}
+
+.impact__heading span,
+.impact__next > span {
+  font:
+    500 10px/1.5 Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.impact__heading h2 {
+  max-width: 950px;
+  font:
+    400 clamp(40px, 5.4vw, 80px) / 1.06 Manrope,
+    sans-serif;
+  letter-spacing: -0.05em;
+}
+
+.impact__copy {
+  width: min(690px, 75%);
+  margin: 75px 0 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px;
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
+}
+
+.figure--dark {
+  margin-top: 100px;
+}
+
+.figure--dark > a {
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.figure--dark figcaption,
+.figure--dark figcaption span {
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
+}
+
+.impact__next {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 30px;
+  margin-top: 100px;
+  padding-top: 40px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+}
+
+.impact__next p {
+  max-width: 760px;
+  font:
+    300 clamp(23px, 2.5vw, 34px) / 1.45 Manrope,
+    sans-serif;
+}
+
+.next-project {
+  padding: 90px clamp(24px, 8vw, 140px);
+  color: white;
+  background: var(--ink);
+}
+
+.next-project > p {
+  color: #777;
+  font:
+    500 10px Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.next-project a {
+  margin-top: 25px;
+  padding: 35px 0;
+  display: grid;
+  grid-template-columns: 1fr 2.2fr auto;
+  align-items: center;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+}
+
+.next-project a span {
+  color: var(--lime);
+  font:
+    500 10px Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.next-project a strong {
+  font:
+    400 clamp(34px, 5vw, 70px) Manrope,
+    sans-serif;
+  letter-spacing: -0.045em;
+}
+
+.next-project a .arrow {
+  width: 40px;
+  transition: transform 180ms ease;
+}
+
+.next-project a:hover .arrow {
+  transform: translateX(10px);
+}
+
+footer {
+  min-height: 420px;
+  padding: 80px clamp(24px, 8vw, 140px) 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  color: var(--ink);
+  background: var(--yellow);
+}
+
+footer > p {
+  font:
+    500 11px Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+footer > a {
+  max-width: 900px;
+  margin: auto 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font:
+    400 clamp(35px, 5vw, 75px) / 1.1 Manrope,
+    sans-serif;
+  letter-spacing: -0.05em;
+}
+
+footer > a .arrow {
+  flex: none;
+  width: 48px;
+}
+
+footer > span {
+  align-self: end;
+  font:
+    400 10px Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+}
+
+@media (max-width: 900px) {
+  .overview,
+  .statement,
+  .impact__heading,
+  .impact__next {
+    grid-template-columns: 1fr;
+  }
+
+  .meta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .statement__line,
+  .statement .statement__detail {
+    grid-column: 1;
+  }
+
+  .statement {
+    align-content: start;
+  }
+
+  .impact__copy {
+    width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  body {
+    font-size: 16px;
+  }
+
+  .site-header {
+    height: 68px;
+    padding: 0 18px;
+  }
+
+  .avatar-link,
+  .avatar-link img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .menu-toggle {
+    z-index: 2;
+    position: relative;
+    width: 42px;
+    height: 42px;
+    margin-left: auto;
+    display: grid;
+    place-content: center;
+    gap: 6px;
+    background: transparent;
+    border: 0;
+  }
+
+  .menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--ink);
+    transition: transform 0.22s;
+  }
+
+  .menu-toggle.is-open span:first-child {
+    transform: translateY(4px) rotate(45deg);
+  }
+
+  .menu-toggle.is-open span:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+
+  .site-header nav {
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    inset: 68px 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-left: 0;
+    padding: 14px 18px 20px;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 8px 18px #00000014;
+    transform: translateY(-130%);
+    transition:
+      transform 0.26s,
+      opacity 0.22s;
+  }
+
+  .site-header nav.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .site-header nav a {
+    display: block;
+    padding: 14px 0;
+    text-align: left;
+    font-size: 17px;
+  }
+
+  .hero {
+    min-height: 820px;
+    padding-top: 48px;
+  }
+
+  .hero__eyebrow {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hero h1 br {
+    display: none;
+  }
+
+  .hero__title > p {
+    margin: 34px 0 0;
+  }
+
+  .hero__mark {
+    display: none;
+  }
+
+  .overview {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .overview__copy {
+    padding-top: 45px;
+  }
+
+  .meta {
+    margin-top: 55px;
+    grid-template-columns: 1fr;
+  }
+
+  .meta div {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .contents {
+    display: block;
+  }
+
+  .contents > div {
+    margin-top: 25px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .statement {
+    min-height: 650px;
+  }
+
+  .chapter {
+    width: calc(100% - 40px);
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .chapter__label {
+    position: static;
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+  }
+
+  .chapter__label span {
+    margin: 0;
+    font-size: 28px;
+  }
+
+  .problem-grid,
+  .figure-pair,
+  .decision,
+  .impact__copy {
+    grid-template-columns: 1fr;
+  }
+
+  .problem-grid > div + div {
+    padding-left: 0;
+    border-top: 1px solid var(--rule);
+    border-left: 0;
+  }
+
+  .problem-grid h3 {
+    margin-top: 20px;
+  }
+
+  blockquote,
+  .pullquote {
+    padding: 28px;
+  }
+
+  .figure {
+    margin-top: 50px;
+  }
+
+  .figure-pair .figure {
+    margin-top: 35px;
+  }
+
+  .figure-pair .figure > a {
+    height: auto;
+  }
+
+  .figure__open {
+    display: none;
+  }
+
+  .decision > div {
+    padding: 32px 25px;
+  }
+
+  .decision ul {
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    border-left: 0;
+  }
+
+  .decision li span {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .impact__copy {
+    margin-top: 45px;
+  }
+
+  .next-project a {
+    grid-template-columns: 1fr auto;
+  }
+
+  .next-project a span {
+    grid-column: 1 / -1;
+    margin-bottom: 18px;
+  }
+
+  footer {
+    min-height: 470px;
+  }
+
+  footer > a {
+    align-items: end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---- Additions for the Snyk Analytics case study ---- */
+
+.meta--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.contents > div {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.problem-grid--two {
+  grid-template-columns: repeat(2, 1fr);
+  border-radius: 0;
+}
+
+.problem-grid--two > div {
+  padding: 28px 28px 32px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.problem-grid--two > div + div {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.problem-grid--two > div:nth-child(even) {
+  padding-left: 28px;
+  border-left: 1px solid var(--rule);
+}
+
+.problem-grid--two h3 {
+  margin-top: 26px;
+}
+
+.problem-grid ul {
+  margin-top: 14px;
+  color: #666;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.problem-grid ul li + li {
+  margin-top: 6px;
+}
+
+.problem-grid ul li strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.decision + .decision {
+  margin-top: -40px;
+}
+
+.decision li em {
+  display: block;
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: normal;
+}
+
+.impact__list {
+  width: min(690px, 75%);
+  margin: 45px 0 0 auto;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+}
+
+.impact__list li {
+  display: flex;
+  gap: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+  font-size: 18px;
+}
+
+.impact__list li span {
+  flex: none;
+  width: 28px;
+  font:
+    500 10px/2.4 Manrope,
+    sans-serif;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--ink) 60%, transparent);
+}
+
+.figure--video .video {
+  position: relative;
+  padding: clamp(15px, 2.5vw, 34px);
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.figure--video .video > div {
+  position: relative;
+  padding-top: 56.17%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.figure--video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 900px) {
+  .contents > div {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .impact__list {
+    width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .meta--three,
+  .problem-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .problem-grid--two > div:nth-child(even) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .contents > div {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .decision + .decision {
+    margin-top: -40px;
+  }
+}
+
+/* ---- Added for the shared site ---- */
+.chapter__body .list { margin: 24px 0 0; padding: 0; list-style: none; }
+.chapter__body .list li { position: relative; padding: 12px 0 12px 28px; border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); line-height: 1.6; }
+.chapter__body .list li:last-child { border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); }
+.chapter__body .list li::before { content: ""; position: absolute; left: 4px; top: 22px; width: 8px; height: 8px; border-radius: 50%; background: currentColor; opacity: .45; }
+.chapter__body .list strong { display: block; font-weight: 700; }
+.figure--banner { margin-top: 0; }
+.video-placeholder { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: color-mix(in srgb, white 70%, transparent); font: 500 15px/1.5 Manrope, sans-serif; padding: 24px; }
+.video-placeholder strong { display: block; font-size: 18px; color: white; margin-bottom: 4px; }
+
+    </style>
   </head>
   <body>
-    <!-- figma:body-start -->
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <!-- figma:body-end -->
+    <div class="site">
+      <header class="site-header">
+        <a href="index.html#top" class="avatar-link" aria-label="Phoebe Yu, home">
+          <img src="Homepage/src/assets/phoebe-avatar.png" alt="" />
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Open menu">
+          <span></span>
+          <span></span>
+        </button>
+        <nav id="main-menu" aria-label="Main navigation">
+          <a href="index.html#top">Home</a>
+          <a href="snyk-analytics.html">Analytics</a>
+          <a class="active" href="snyk-learn.html">Learn</a>
+          <a href="myobservatory.html">MyObservatory</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero">
+          <div class="hero__eyebrow reveal">
+            <span>Case study</span>
+            <span>Enterprise product · 2024</span>
+          </div>
+          <div class="hero__title reveal reveal--delay">
+            <h1>
+              Snyk Learn Assignments:
+              <br />
+              <em>learning as an operational tool.</em>
+            </h1>
+            <p>Snyk Learn enables AppSec teams to assign secure coding lessons and track learner progress at scale. This project improved how assignments are created and monitored across large groups of engineers.</p>
+          </div>
+          <div class="hero__footer">
+            <a href="#overview" class="round-link" aria-label="Scroll to project overview">
+              <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+            <div class="hero__mark" aria-hidden="true">LEARN</div>
+          </div>
+        </section>
+
+        <section class="overview" id="overview">
+          <div class="overview__intro">
+            <p class="kicker">Learn overview</p>
+            <h2>Turning learning into an operational security product.</h2>
+          </div>
+          <div class="overview__copy">
+            <p>I led end-to-end product design for the Assignments experience, partnering closely with product and engineering to define scope, explore solutions, and deliver a focused early release.</p>
+          </div>
+          <dl class="meta meta--three">
+            <div>
+              <dt>Role</dt>
+              <dd>Product Designer</dd>
+            </div>
+            <div>
+              <dt>Team</dt>
+              <dd>Product, Engineering &amp; Content</dd>
+            </div>
+            <div>
+              <dt>Timeline</dt>
+              <dd>2024</dd>
+            </div>
+          </dl>
+        </section>
+
+        <aside class="contents" aria-label="On this page">
+          <span>On this page</span>
+          <div>
+            <a href="#problem"><span>01</span>The problem</a>
+            <a href="#jtbd"><span>02</span>Jobs-to-be-Done</a>
+            <a href="#ooux"><span>03</span>OOUX exploration</a>
+            <a href="#scope"><span>04</span>Scope &amp; task flow</a>
+            <a href="#design"><span>05</span>Designing the experience</a>
+            <a href="#outcome"><span>06</span>Outcome &amp; impact</a>
+          </div>
+        </aside>
+
+        <section class="statement">
+          <p>The impact</p>
+          <h2>From passive content library to a <em>mission-critical compliance tool.</em></h2>
+          <div class="statement__line"></div>
+          <p class="statement__detail">Assignments became the foundation of Snyk Learn’s first enterprise tier, with beta organisations converting to paid through to the full V1 launch.</p>
+        </section>
+
+        <div class="narrative">
+          <section class="chapter" id="problem">
+            <div class="chapter__label">
+              <span>01</span>
+              <p>The problem</p>
+            </div>
+            <div class="chapter__body">
+              <h2>Strong content, no operational control.</h2>
+              <p class="lead">Snyk Learn offered high-quality, bite-sized lessons, but AppSec teams still had to share content through LMS platforms, email, or Slack.</p>
+              <p>These workarounds didn’t scale and made it difficult to:</p>
+              <div class="problem-grid">
+                <div>
+                  <span>01</span>
+                  <h3>Distribute</h3>
+                  <p>Relevant lessons to the right teams.</p>
+                </div>
+                <div>
+                  <span>02</span>
+                  <h3>Track</h3>
+                  <p>Completion and learner progress.</p>
+                </div>
+                <div>
+                  <span>03</span>
+                  <h3>Generate</h3>
+                  <p>Evidence for audits and compliance.</p>
+                </div>
+              </div>
+              <div class="pullquote">
+                <span>Core tension</span>
+                <p>AppSec faced high effort and low visibility, with no reliable way to prove learning impact. This gap led us to design the Assignments experience.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="chapter" id="jtbd">
+            <div class="chapter__label">
+              <span>02</span>
+              <p>Jobs-to-be-Done</p>
+            </div>
+            <div class="chapter__body">
+              <h2>From pattern to Jobs-to-be-Done.</h2>
+              <p>To understand how AppSec managed learning assignments, and where friction occurred, I translated the problem into core Jobs-to-be-Done and mapped the end-to-end assignment journey.</p>
+              <ul class="list">
+                <li>Surface unmet needs and workflow inefficiencies</li>
+                <li>Align the team around the user’s real job</li>
+                <li>Prioritise where Assignments could deliver the most impact</li>
+              </ul>
+              <figure class="figure figure--light">
+                <a href="Homepage/src/assets/case-study/learn-jtbd.png" target="_blank" rel="noreferrer" aria-label="Open figure 1 at full size">
+                  <img src="Homepage/src/assets/case-study/learn-jtbd.png" alt="AppSec persona Jobs-to-be-Done" loading="lazy" />
+                  <span class="figure__open">View full size <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow diagonal"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+                <figcaption><span>Fig. 01</span>AppSec persona Jobs-to-be-Done</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <section class="chapter" id="ooux">
+            <div class="chapter__label">
+              <span>03</span>
+              <p>OOUX exploration</p>
+            </div>
+            <div class="chapter__body">
+              <h2>Defining the system.</h2>
+              <p class="lead">Snyk Learn already included lessons, learning paths and certificates. A new module needed to integrate cleanly into that ecosystem.</p>
+              <p>I mapped the object relationships to reduce ambiguity across design and engineering, and to identify the core content and metadata an assignment actually contains.</p>
+              <figure class="figure figure--light">
+                <a href="Homepage/src/assets/case-study/learn-object-glossary.png" target="_blank" rel="noreferrer" aria-label="Open figure 2 at full size">
+                  <img src="Homepage/src/assets/case-study/learn-object-glossary.png" alt="Snyk Learn object glossary" loading="lazy" />
+                  <span class="figure__open">View full size <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow diagonal"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+                <figcaption><span>Fig. 02</span>Snyk Learn object glossary</figcaption>
+              </figure>
+              <figure class="figure figure--light">
+                <a href="Homepage/src/assets/case-study/learn-object-relationships.png" target="_blank" rel="noreferrer" aria-label="Open figure 3 at full size">
+                  <img src="Homepage/src/assets/case-study/learn-object-relationships.png" alt="Object relationships map" loading="lazy" />
+                  <span class="figure__open">View full size <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow diagonal"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+                <figcaption><span>Fig. 03</span>Object relationships map</figcaption>
+              </figure>
+              <figure class="figure figure--light">
+                <a href="Homepage/src/assets/case-study/learn-orca-map.png" target="_blank" rel="noreferrer" aria-label="Open figure 4 at full size">
+                  <img src="Homepage/src/assets/case-study/learn-orca-map.png" alt="ORCA map of the Assignment object, nested objects, metadata, core content and AppSec touchpoints" loading="lazy" />
+                  <span class="figure__open">View full size <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow diagonal"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+                <figcaption><span>Fig. 04</span>ORCA map of the Assignment object, nested objects, metadata, core content and AppSec touchpoints</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <section class="chapter" id="scope">
+            <div class="chapter__label">
+              <span>04</span>
+              <p>Scope &amp; task flow</p>
+            </div>
+            <div class="chapter__body">
+              <h2>Choosing what matters.</h2>
+              <p>Mapping the full journey revealed that Assignments was not one interaction, but a system spanning six tasks: create, edit, delete, view progress, send reminders and download reports.</p>
+              <figure class="figure figure--light">
+                <a href="Homepage/src/assets/case-study/learn-task-flow.png" target="_blank" rel="noreferrer" aria-label="Open figure 5 at full size">
+                  <img src="Homepage/src/assets/case-study/learn-task-flow.png" alt="AppSec Assignment CTA flow" loading="lazy" />
+                  <span class="figure__open">View full size <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow diagonal"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+                <figcaption><span>Fig. 05</span>AppSec Assignment CTA flow</figcaption>
+              </figure>
+              <p>Because this was a new enterprise workflow, we avoided building the entire lifecycle upfront and aligned on the minimum set of tasks needed to validate value.</p>
+              <div class="problem-grid problem-grid--two">
+                <div>
+                  <span>01</span>
+                  <h3>Included in early version</h3>
+                  <p>Create assignments, view assignment progress, download reports.</p>
+                </div>
+                <div>
+                  <span>02</span>
+                  <h3>Intentionally deferred</h3>
+                  <p>Edit assignments, delete assignments, send reminders.</p>
+                </div>
+              </div>
+              <div class="pullquote">
+                <span>Decision</span>
+                <p>This reduced system complexity, accelerated delivery, and let us validate the core enterprise use case before expanding.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="chapter" id="design">
+            <div class="chapter__label">
+              <span>05</span>
+              <p>Designing the experience</p>
+            </div>
+            <div class="chapter__body">
+              <h2>From flow to interface.</h2>
+              <p>Early exploration mapped the assignment journey and found where clarity and efficiency could be improved. These flows validated the release scope and shaped how key actions were structured.</p>
+              <figure class="figure figure--light">
+                <a href="Homepage/src/assets/case-study/learn-early-flow.png" target="_blank" rel="noreferrer" aria-label="Open figure 6 at full size">
+                  <img src="Homepage/src/assets/case-study/learn-early-flow.png" alt="Early assignment flow: scoped create and progress experience" loading="lazy" />
+                  <span class="figure__open">View full size <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow diagonal"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+                <figcaption><span>Fig. 06</span>Early assignment flow: scoped create and progress experience</figcaption>
+              </figure>
+              <p>Engineering flagged that assignment titles would need a new data model and learning paths would add significant complexity. We cut both from the first release, prioritising speed and validated learning over completeness.</p>
+              <div class="pullquote">
+                <span>Early model</span>
+                <p>Create assignments by selecting lessons and due dates, then view progress and completion status. Nothing more until real usage proved the need.</p>
+              </div>
+              <h3 class="subhead">Key UI screens</h3>
+              <p>AppSec can select an assignment, quickly create new ones, review progress in a structured table, and export data as a CSV for analysis and audit reporting.</p>
+              <figure class="figure figure--light">
+                <a href="Homepage/src/assets/case-study/learn-key-screens.png" target="_blank" rel="noreferrer" aria-label="Open figure 7 at full size">
+                  <img src="Homepage/src/assets/case-study/learn-key-screens.png" alt="Early key screens for create, progress and export workflows" loading="lazy" />
+                  <span class="figure__open">View full size <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow diagonal"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+                <figcaption><span>Fig. 07</span>Early key screens for create, progress and export workflows</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <section class="chapter" id="outcome">
+            <div class="chapter__label">
+              <span>06</span>
+              <p>Outcome &amp; impact</p>
+            </div>
+            <div class="chapter__body">
+              <h2>From passive library to compliance tool.</h2>
+              <p class="lead">Assignments let AppSec teams distribute training at scale, monitor completion in one view, and export audit-ready reports.</p>
+              <p>By turning a passive library into a compliance workflow, the work unlocked the product’s first enterprise monetisation initiative. After launch, paid adoption and revenue grew significantly within six months, and we moved straight into edit, delete and reminders on the path to V1.</p>
+              <figure class="figure figure--light">
+                <a href="Homepage/src/assets/case-study/learn-final-design.png" target="_blank" rel="noreferrer" aria-label="Open figure 8 at full size">
+                  <img src="Homepage/src/assets/case-study/learn-final-design.png" alt="Assignment final design" loading="lazy" />
+                  <span class="figure__open">View full size <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow diagonal"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+                <figcaption><span>Fig. 08</span>Assignment final design</figcaption>
+              </figure>
+            </div>
+          </section>
+
+        </div>
+
+        <section class="next-project">
+          <p>Continue exploring</p>
+          <a href="myobservatory.html">
+            <span>Next case study</span>
+            <strong>MyObservatory</strong>
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </a>
+        </section>
+      </main>
+
+      <footer>
+        <p>Thanks for stopping by.</p>
+        <a href="mailto:phoebeyu.design@gmail.com">
+          Let’s make something meaningful.
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow diagonal"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+        </a>
+        <span>Product designer · 2026</span>
+      </footer>
+    </div>
+    <script>
+(function () {
+  var toggle = document.querySelector(".menu-toggle");
+  var menu = document.getElementById("main-menu");
+  function setOpen(open) {
+    toggle.classList.toggle("is-open", open);
+    menu.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+  toggle.addEventListener("click", function () { setOpen(!menu.classList.contains("is-open")); });
+  menu.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { setOpen(false); }); });
+
+  // YouTube: paste a link or video ID into data-youtube="" on a .video box.
+  document.querySelectorAll("[data-youtube]").forEach(function (box) {
+    var v = box.getAttribute("data-youtube").trim();
+    var m = v.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/);
+    var id = m ? m[1] : (/^[\w-]{11}$/.test(v) ? v : "");
+    if (!id) return; // keeps the "Video coming soon" placeholder
+    box.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id +
+      '?rel=0" title="' + (box.getAttribute("title") || "Video") +
+      '" loading="lazy" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+  });
+})();
+    </script>
   </body>
 </html>
