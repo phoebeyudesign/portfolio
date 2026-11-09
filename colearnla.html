@@ -1,0 +1,1521 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colearnla · Phoebe Yu</title>
+    <meta name="description" content="A peer-to-peer co-learning group for UX practitioners in Hong Kong. A community project by Phoebe Yu." />
+    <link rel="icon" type="image/png" href="AnalyticsImage/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+/* Reset (stands in for Tailwind Preflight used by the Figma Make template) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  background: #171713;
+}
+
+body {
+  color: #171713;
+  background: #f3f0e7;
+  font-family: Manrope, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, p, blockquote, figure, dl, dd {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+img,
+svg,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  color: #171713;
+  background: #ff0;
+}
+
+:root {
+  --ink: #171713;
+  --cream: #f3f0e7;
+  --yellow: #ff0;
+  --lime: #c9f459;
+  --lavender: #c9baff;
+  --coral: #ff765f;
+  --line: 2px solid var(--ink);
+  --rule: color-mix(in srgb, var(--ink) 20%, transparent);
+}
+
+.site {
+  min-width: 320px;
+  overflow: clip;
+}
+
+.site-header {
+  z-index: 90;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 clamp(22px, 4vw, 64px);
+  color: #222;
+  background: #fff;
+  box-shadow: 1px 1px 3px #ddd;
+}
+
+.avatar-link,
+.avatar-link img {
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-left: 18px;
+}
+
+.site-header nav a {
+  opacity: 0.7;
+  color: #222;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 15px 16px;
+  font-size: 12px;
+  font-weight: 300;
+  transition:
+    opacity 0.2s,
+    transform 0.2s,
+    color 0.2s;
+}
+
+.site-header nav a:hover {
+  opacity: 1;
+  color: #8f8f8f;
+  transform: translateY(-2px);
+}
+
+.site-header nav a.active {
+  opacity: 1;
+  color: #222;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.hero {
+  position: relative;
+  min-height: 94svh;
+  color: var(--ink);
+  background: var(--lavender);
+  padding: 73px clamp(24px, 5vw, 76px) 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero__eyebrow {
+  display: flex;
+  justify-content: space-between;
+  max-width: 760px;
+  font:
+    400 12px/1.2 Manrope,
+    sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.hero__title {
+  z-index: 1;
+  position: relative;
+  margin-top: auto;
+  margin-bottom: 7vh;
+}
+
+.hero h1 {
+  max-width: 1160px;
+  font:
+    400 clamp(52px, 7.1vw, 112px) / 0.98 Manrope,
+    sans-serif;
+  letter-spacing: -0.055em;
+}
+
+.hero h1 em {
+  color: var(--ink);
+  font-style: normal;
+}
+
+.statement h2 em {
+  color: var(--lime);
+  font-style: normal;
+}
+
+.hero__title > p {
+  width: min(520px, 100%);
+  margin-top: 42px;
+  margin-left: auto;
+  color: color-mix(in srgb, var(--ink) 68%, transparent);
+  font-size: clamp(17px, 1.4vw, 21px);
+  line-height: 1.55;
+}
+
+.hero__footer {
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.round-link {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  background: var(--lime);
+  border-radius: 50%;
+  transform: rotate(90deg);
+  transition: transform 180ms ease;
+}
+
+.round-link:hover {
+  transform: rotate(90deg) scale(1.08);
+}
+
+.arrow {
+  width: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.arrow.diagonal {
+  transform: rotate(-45deg);
+}
+
+.hero__mark {
+  color: color-mix(in srgb, var(--ink) 7%, transparent);
+  font:
+    600 clamp(42px, 7vw, 100px) / 0.7 Manrope,
+    sans-serif;
+  letter-spacing: -0.05em;
+}
+
+.reveal {
+  animation: enter 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.reveal--delay {
+  animation-delay: 120ms;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+.overview {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  padding: clamp(80px, 11vw, 164px) clamp(24px, 8vw, 140px);
+  background-color: #fff;
+  background-image: radial-gradient(#d9d9d4 1.25px, transparent 1.25px);
+  background-size: 20px 20px;
+}
+
+.kicker,
+.overview dt {
+  margin-bottom: 24px;
+  font:
+    500 11px/1.2 Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.overview h2 {
+  max-width: 720px;
+  font:
+    400 clamp(34px, 4vw, 62px) / 1.12 Manrope,
+    sans-serif;
+  letter-spacing: -0.045em;
+}
+
+.overview__copy {
+  padding-top: 42px;
+  color: #535353;
+  font-size: 19px;
+}
+
+.overview__copy p + p {
+  margin-top: 24px;
+}
+
+.meta {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 38px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+
+.overview dt {
+  margin-bottom: 12px;
+  color: #777;
+}
+
+.overview dd {
+  max-width: 230px;
+  font:
+    400 15px/1.5 Manrope,
+    sans-serif;
+}
+
+.contents {
+  position: relative;
+  background: var(--yellow);
+  padding: 35px clamp(24px, 8vw, 140px);
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.contents > span {
+  flex: none;
+  font:
+    500 11px/1.5 Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.contents > div {
+  width: min(780px, 100%);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px 32px;
+}
+
+.contents a {
+  display: flex;
+  gap: 12px;
+  font:
+    400 13px/1.3 Manrope,
+    sans-serif;
+}
+
+.contents a span {
+  opacity: 0.45;
+}
+
+.statement {
+  min-height: 680px;
+  color: white;
+  background: var(--ink);
+  padding: clamp(80px, 10vw, 150px) clamp(24px, 8vw, 140px);
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-content: center;
+  gap: 45px;
+}
+
+.statement > p:first-child {
+  color: var(--lime);
+  font:
+    500 11px/1.5 Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.statement h2 {
+  max-width: 1040px;
+  font:
+    400 clamp(38px, 5vw, 74px) / 1.1 Manrope,
+    sans-serif;
+  letter-spacing: -0.045em;
+}
+
+.statement__line {
+  grid-column: 2;
+  height: 1px;
+  margin-top: 28px;
+  background: rgba(255, 255, 255, 0.23);
+}
+
+.statement .statement__detail {
+  grid-column: 2;
+  max-width: 660px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 19px;
+}
+
+.narrative {
+  background-color: #fff;
+  background-image: radial-gradient(#d9d9d4 1.25px, transparent 1.25px);
+  background-size: 20px 20px;
+}
+
+.chapter {
+  width: min(1240px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: clamp(90px, 12vw, 170px) 0;
+  display: grid;
+  grid-template-columns: minmax(170px, 0.4fr) minmax(0, 1.6fr);
+  gap: clamp(40px, 8vw, 120px);
+  border-bottom: 1px solid var(--rule);
+  scroll-margin-top: 30px;
+}
+
+.chapter__label {
+  height: fit-content;
+  position: sticky;
+  top: 40px;
+}
+
+.chapter__label span {
+  display: block;
+  margin-bottom: 12px;
+  color: #8d8d8d;
+  font:
+    300 42px/1 Manrope,
+    sans-serif;
+}
+
+.chapter__label p {
+  font:
+    500 11px/1.4 Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.chapter__body {
+  max-width: 880px;
+}
+
+.chapter h2 {
+  max-width: 820px;
+  margin-bottom: 42px;
+  font:
+    400 clamp(36px, 4.3vw, 64px) / 1.08 Manrope,
+    sans-serif;
+  letter-spacing: -0.045em;
+}
+
+.chapter__body > p {
+  max-width: 720px;
+  color: #555;
+  font-size: 18px;
+}
+
+.chapter__body > p + p {
+  margin-top: 24px;
+}
+
+.chapter__body > .lead {
+  color: var(--ink);
+  font:
+    400 clamp(21px, 2vw, 28px) / 1.5 Manrope,
+    sans-serif;
+  letter-spacing: -0.018em;
+}
+
+.problem-grid {
+  margin: 58px 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.problem-grid > div {
+  padding: 25px 24px 32px 0;
+}
+
+.problem-grid > div + div {
+  padding-left: 24px;
+  border-left: 1px solid var(--rule);
+}
+
+.problem-grid span {
+  color: #888;
+  font:
+    400 11px Manrope,
+    sans-serif;
+}
+
+.problem-grid h3 {
+  margin: 42px 0 8px;
+  font:
+    500 18px Manrope,
+    sans-serif;
+}
+
+.problem-grid p {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+blockquote {
+  margin-top: 70px;
+  padding: 40px;
+  color: white;
+  background: var(--ink);
+  border-radius: 22px;
+  overflow: hidden;
+  font:
+    400 clamp(28px, 3vw, 45px) / 1.25 Manrope,
+    sans-serif;
+  letter-spacing: -0.035em;
+}
+
+blockquote::before {
+  content: "→";
+  display: block;
+  margin-bottom: 42px;
+  color: var(--lime);
+  font-size: 34px;
+}
+
+blockquote span {
+  display: block;
+  color: var(--lime);
+}
+
+.figure {
+  margin: 72px 0 20px;
+}
+
+.figure > a {
+  position: relative;
+  display: block;
+  padding: clamp(15px, 2.5vw, 34px);
+  background: var(--cream);
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.figure img {
+  width: 100%;
+  height: auto;
+  transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.figure__open {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 13px;
+  color: white;
+  background: var(--ink);
+  font:
+    400 10px Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0;
+  transform: translateY(5px);
+  transition: 180ms ease;
+}
+
+.figure__open .arrow {
+  width: 15px;
+}
+
+.figure a:hover img {
+  transform: scale(1.012);
+}
+
+.figure a:hover .figure__open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.figure figcaption {
+  margin-top: 14px;
+  display: flex;
+  gap: 18px;
+  color: #676767;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.figure figcaption span {
+  color: var(--ink);
+  flex: none;
+  font:
+    500 10px/1.8 Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.figure-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.figure-pair .figure {
+  margin-top: 28px;
+}
+
+.figure-pair .figure > a {
+  height: 410px;
+  display: flex;
+  align-items: center;
+}
+
+.decision {
+  margin: 64px 0;
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  color: white;
+  background: var(--ink);
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.decision > div {
+  padding: 45px;
+}
+
+.decision .kicker {
+  color: var(--lime);
+}
+
+.decision h3 {
+  font:
+    400 28px/1.3 Manrope,
+    sans-serif;
+  letter-spacing: -0.025em;
+}
+
+.decision ul {
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.decision li {
+  padding: 22px 26px;
+  font-size: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.decision li:last-child {
+  border: 0;
+}
+
+.decision li span {
+  display: inline-block;
+  width: 78px;
+  margin-right: 12px;
+  color: var(--lime);
+  font:
+    500 9px Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.decision li.muted {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.decision li.muted span {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.pullquote {
+  margin: 64px 0;
+  padding: 45px;
+  background: var(--lime);
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.pullquote span {
+  font:
+    500 10px Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.pullquote p {
+  max-width: 680px;
+  margin-top: 50px;
+  font:
+    400 clamp(25px, 3vw, 39px) / 1.25 Manrope,
+    sans-serif;
+  letter-spacing: -0.035em;
+}
+
+.chapter__body .subhead {
+  max-width: 700px;
+  margin: 90px 0 24px;
+  font:
+    400 clamp(27px, 3vw, 40px) / 1.2 Manrope,
+    sans-serif;
+  letter-spacing: -0.035em;
+}
+
+.impact {
+  color: var(--ink);
+  background: var(--lavender);
+  padding: clamp(90px, 11vw, 160px) clamp(24px, 8vw, 140px);
+  scroll-margin-top: 0;
+}
+
+.impact__heading {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 30px;
+}
+
+.impact__heading span,
+.impact__next > span {
+  font:
+    500 10px/1.5 Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.impact__heading h2 {
+  max-width: 950px;
+  font:
+    400 clamp(40px, 5.4vw, 80px) / 1.06 Manrope,
+    sans-serif;
+  letter-spacing: -0.05em;
+}
+
+.impact__copy {
+  width: min(690px, 75%);
+  margin: 75px 0 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px;
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
+}
+
+.figure--dark {
+  margin-top: 100px;
+}
+
+.figure--dark > a {
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+.figure--dark figcaption,
+.figure--dark figcaption span {
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
+}
+
+.impact__next {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 30px;
+  margin-top: 100px;
+  padding-top: 40px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+}
+
+.impact__next p {
+  max-width: 760px;
+  font:
+    300 clamp(23px, 2.5vw, 34px) / 1.45 Manrope,
+    sans-serif;
+}
+
+.next-project {
+  padding: 90px clamp(24px, 8vw, 140px);
+  color: white;
+  background: var(--ink);
+}
+
+.next-project > p {
+  color: #777;
+  font:
+    500 10px Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.next-project a {
+  margin-top: 25px;
+  padding: 35px 0;
+  display: grid;
+  grid-template-columns: 1fr 2.2fr auto;
+  align-items: center;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+}
+
+.next-project a span {
+  color: var(--lime);
+  font:
+    500 10px Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.next-project a strong {
+  font:
+    400 clamp(34px, 5vw, 70px) Manrope,
+    sans-serif;
+  letter-spacing: -0.045em;
+}
+
+.next-project a .arrow {
+  width: 40px;
+  transition: transform 180ms ease;
+}
+
+.next-project a:hover .arrow {
+  transform: translateX(10px);
+}
+
+footer {
+  min-height: 420px;
+  padding: 80px clamp(24px, 8vw, 140px) 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  color: var(--ink);
+  background: var(--yellow);
+}
+
+footer > p {
+  font:
+    500 11px Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+footer > a {
+  max-width: 900px;
+  margin: auto 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font:
+    400 clamp(35px, 5vw, 75px) / 1.1 Manrope,
+    sans-serif;
+  letter-spacing: -0.05em;
+}
+
+footer > a .arrow {
+  flex: none;
+  width: 48px;
+}
+
+footer > span {
+  align-self: end;
+  font:
+    400 10px Manrope,
+    sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+}
+
+@media (max-width: 900px) {
+  .overview,
+  .statement,
+  .impact__heading,
+  .impact__next {
+    grid-template-columns: 1fr;
+  }
+
+  .meta {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .statement__line,
+  .statement .statement__detail {
+    grid-column: 1;
+  }
+
+  .statement {
+    align-content: start;
+  }
+
+  .impact__copy {
+    width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  body {
+    font-size: 16px;
+  }
+
+  .site-header {
+    height: 68px;
+    padding: 0 18px;
+  }
+
+  .avatar-link,
+  .avatar-link img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .menu-toggle {
+    z-index: 2;
+    position: relative;
+    width: 42px;
+    height: 42px;
+    margin-left: auto;
+    display: grid;
+    place-content: center;
+    gap: 6px;
+    background: transparent;
+    border: 0;
+  }
+
+  .menu-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--ink);
+    transition: transform 0.22s;
+  }
+
+  .menu-toggle.is-open span:first-child {
+    transform: translateY(4px) rotate(45deg);
+  }
+
+  .menu-toggle.is-open span:last-child {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+
+  .site-header nav {
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    inset: 68px 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-left: 0;
+    padding: 14px 18px 20px;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 8px 18px #00000014;
+    transform: translateY(-130%);
+    transition:
+      transform 0.26s,
+      opacity 0.22s;
+  }
+
+  .site-header nav.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .site-header nav a {
+    display: block;
+    padding: 14px 0;
+    text-align: left;
+    font-size: 17px;
+  }
+
+  .hero {
+    min-height: 820px;
+    padding-top: 48px;
+  }
+
+  .hero__eyebrow {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hero h1 br {
+    display: none;
+  }
+
+  .hero__title > p {
+    margin: 34px 0 0;
+  }
+
+  .hero__mark {
+    display: none;
+  }
+
+  .overview {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .overview__copy {
+    padding-top: 45px;
+  }
+
+  .meta {
+    margin-top: 55px;
+    grid-template-columns: 1fr;
+  }
+
+  .meta div {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .contents {
+    display: block;
+  }
+
+  .contents > div {
+    margin-top: 25px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .statement {
+    min-height: 650px;
+  }
+
+  .chapter {
+    width: calc(100% - 40px);
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .chapter__label {
+    position: static;
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+  }
+
+  .chapter__label span {
+    margin: 0;
+    font-size: 28px;
+  }
+
+  .problem-grid,
+  .figure-pair,
+  .decision,
+  .impact__copy {
+    grid-template-columns: 1fr;
+  }
+
+  .problem-grid > div + div {
+    padding-left: 0;
+    border-top: 1px solid var(--rule);
+    border-left: 0;
+  }
+
+  .problem-grid h3 {
+    margin-top: 20px;
+  }
+
+  blockquote,
+  .pullquote {
+    padding: 28px;
+  }
+
+  .figure {
+    margin-top: 50px;
+  }
+
+  .figure-pair .figure {
+    margin-top: 35px;
+  }
+
+  .figure-pair .figure > a {
+    height: auto;
+  }
+
+  .figure__open {
+    display: none;
+  }
+
+  .decision > div {
+    padding: 32px 25px;
+  }
+
+  .decision ul {
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    border-left: 0;
+  }
+
+  .decision li span {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .impact__copy {
+    margin-top: 45px;
+  }
+
+  .next-project a {
+    grid-template-columns: 1fr auto;
+  }
+
+  .next-project a span {
+    grid-column: 1 / -1;
+    margin-bottom: 18px;
+  }
+
+  footer {
+    min-height: 470px;
+  }
+
+  footer > a {
+    align-items: end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---- Additions for the Snyk Analytics case study ---- */
+
+.meta--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.contents > div {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.problem-grid--two {
+  grid-template-columns: repeat(2, 1fr);
+  border-radius: 0;
+}
+
+.problem-grid--two > div {
+  padding: 28px 28px 32px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.problem-grid--two > div + div {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.problem-grid--two > div:nth-child(even) {
+  padding-left: 28px;
+  border-left: 1px solid var(--rule);
+}
+
+.problem-grid--two h3 {
+  margin-top: 26px;
+}
+
+.problem-grid ul {
+  margin-top: 14px;
+  color: #666;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.problem-grid ul li + li {
+  margin-top: 6px;
+}
+
+.problem-grid ul li strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.decision + .decision {
+  margin-top: -40px;
+}
+
+.decision li em {
+  display: block;
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: normal;
+}
+
+.impact__list {
+  width: min(690px, 75%);
+  margin: 45px 0 0 auto;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+}
+
+.impact__list li {
+  display: flex;
+  gap: 18px;
+  padding: 18px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+  font-size: 18px;
+}
+
+.impact__list li span {
+  flex: none;
+  width: 28px;
+  font:
+    500 10px/2.4 Manrope,
+    sans-serif;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--ink) 60%, transparent);
+}
+
+.figure--video .video {
+  position: relative;
+  padding: clamp(15px, 2.5vw, 34px);
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.figure--video .video > div {
+  position: relative;
+  padding-top: 56.17%;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.figure--video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 900px) {
+  .contents > div {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .impact__list {
+    width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .meta--three,
+  .problem-grid--two {
+    grid-template-columns: 1fr;
+  }
+
+  .problem-grid--two > div:nth-child(even) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .contents > div {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .decision + .decision {
+    margin-top: -40px;
+  }
+}
+
+/* ---- Added for the shared site ---- */
+.chapter__body .list { margin: 24px 0 0; padding: 0; list-style: none; }
+.chapter__body .list li { position: relative; padding: 12px 0 12px 28px; border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); line-height: 1.6; }
+.chapter__body .list li:last-child { border-bottom: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); }
+.chapter__body .list li::before { content: ""; position: absolute; left: 4px; top: 22px; width: 8px; height: 8px; border-radius: 50%; background: currentColor; opacity: .45; }
+.chapter__body .list strong { display: block; font-weight: 700; }
+.figure--banner { margin-top: 0; }
+.video-placeholder { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: color-mix(in srgb, white 70%, transparent); font: 500 15px/1.5 Manrope, sans-serif; padding: 24px; }
+.video-placeholder strong { display: block; font-size: 18px; color: white; margin-bottom: 4px; }
+
+    </style>
+  </head>
+  <body>
+    <div class="site">
+      <header class="site-header">
+        <a href="https://phoebeyudesign.github.io/portfolio/#top" class="avatar-link" aria-label="Phoebe Yu, home">
+          <img src="AnalyticsImage/phoebe-avatar.png" alt="" />
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Open menu">
+          <span></span>
+          <span></span>
+        </button>
+        <nav id="main-menu" aria-label="Main navigation">
+          <a href="https://phoebeyudesign.github.io/portfolio/#top">Home</a>
+          <a href="snyk-analytics.html">Analytics</a>
+          <a href="https://phoebeyudesign.github.io/portfolio/#learn">Learn</a>
+          <a href="myobservatory.html">MyObservatory</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero">
+          <div class="hero__eyebrow reveal">
+            <span>Community</span>
+            <span>UX co-learning · 2020–2021</span>
+          </div>
+          <div class="hero__title reveal reveal--delay">
+            <h1>
+              Colearnla:
+              <br />
+              <em>UXers learning together.</em>
+            </h1>
+            <p>Colearnla was a casual peer-to-peer learning group where UX practitioners could discuss design topics and learn from each other.</p>
+          </div>
+          <div class="hero__footer">
+            <a href="#overview" class="round-link" aria-label="Scroll to project overview">
+              <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+            <div class="hero__mark" aria-hidden="true">COLEARNLA</div>
+          </div>
+        </section>
+
+        <section class="overview" id="overview">
+          <div class="overview__intro">
+            <p class="kicker">Colearnla overview</p>
+            <h2>What if I created a co-learning group for UXers to collaborate and learn together?</h2>
+          </div>
+          <div class="overview__copy">
+            <p>As a UX designer working as a “team of one”, I missed regular conversations with other designers about the challenges we face.</p>
+            <p>Most local co-learning groups focused on programming, so I started one for UX.</p>
+          </div>
+          <dl class="meta meta--three">
+            <div>
+              <dt>Role</dt>
+              <dd>Organiser</dd>
+            </div>
+            <div>
+              <dt>Community</dt>
+              <dd>Hong Kong UX designers</dd>
+            </div>
+            <div>
+              <dt>Timeline</dt>
+              <dd>2020–2021</dd>
+            </div>
+          </dl>
+        </section>
+
+        <aside class="contents" aria-label="On this page">
+          <span>On this page</span>
+          <div>
+            <a href="#background"><span>01</span>Background</a>
+            <a href="#challenges"><span>02</span>Early challenges</a>
+            <a href="#topics"><span>03</span>Topics</a>
+            <a href="#reflection"><span>04</span>Reflection</a>
+          </div>
+        </aside>
+
+        <div class="narrative">
+          <section class="chapter" id="background">
+            <div class="chapter__label">
+              <span>01</span>
+              <p>Background</p>
+            </div>
+            <div class="chapter__body">
+              <h2>Learning together through shared experience.</h2>
+              <figure class="figure figure--light">
+                <a href="Colearnla/colearnla.png" target="_blank" rel="noreferrer" aria-label="Open figure 1 at full size">
+                  <img src="Colearnla/colearnla.png" alt="Colearnla" loading="lazy" />
+                  <span class="figure__open">View full size <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow diagonal"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+                <figcaption><span>Fig. 01</span>Colearnla</figcaption>
+              </figure>
+              <p>When I met new topics or problems that weren’t covered in training or at work, I wanted a space where designers could learn together through discussion and experience sharing.</p>
+              <p>After a few weekends of brainstorming and planning, the first virtual Colearnla meetup was ready. I invited several local UX designers to join the first session.</p>
+            </div>
+          </section>
+
+          <section class="chapter" id="challenges">
+            <div class="chapter__label">
+              <span>02</span>
+              <p>Early challenges</p>
+            </div>
+            <div class="chapter__body">
+              <h2>The first meetup didn’t go as planned.</h2>
+              <p>The topic was interesting and not widely discussed locally, but attendance was lower than expected. At the end of the session, we held a feedback discussion.</p>
+              <div class="pullquote">
+                <span>The pivot</span>
+                <p>One participant suggested focusing on peer-to-peer practical experience sharing, where designers talk about real challenges from their work.</p>
+              </div>
+              <p>I reorganised the next session around this. The format worked much better, and participants enjoyed deeper discussions with other local UXers.</p>
+            </div>
+          </section>
+
+          <section class="chapter" id="topics">
+            <div class="chapter__label">
+              <span>03</span>
+              <p>Topics</p>
+            </div>
+            <div class="chapter__body">
+              <h2>A year of topics.</h2>
+              <ul class="list">
+                <li>Personas: practical experience sharing</li>
+                <li>App and web accessibility with the Hong Kong Blind Union</li>
+                <li>Whiteboard challenge practice group</li>
+                <li>The Mysterious Design Challenge 2021</li>
+                <li>UXer and developer skill exchange forum</li>
+                <li>Self-awarding Ceremony 2021</li>
+                <li>Lean Coffee retrospective</li>
+                <li>UX debate</li>
+                <li>Hong Kong UX designer survival guide</li>
+                <li>Career check-up workshop</li>
+              </ul>
+              <figure class="figure figure--light">
+                <a href="Colearnla/VoiceOver.png" target="_blank" rel="noreferrer" aria-label="Open figure 2 at full size">
+                  <img src="Colearnla/VoiceOver.png" alt="Colearnla session" loading="lazy" />
+                  <span class="figure__open">View full size <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow diagonal"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+                <figcaption><span>Fig. 02</span>Colearnla session</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <section class="chapter" id="reflection">
+            <div class="chapter__label">
+              <span>04</span>
+              <p>Reflection</p>
+            </div>
+            <div class="chapter__body">
+              <h2>What I enjoyed.</h2>
+              <div class="problem-grid">
+                <div>
+                  <span>01</span>
+                  <h3>Collaboration</h3>
+                  <p>Working with other UX designers in the local community.</p>
+                </div>
+                <div>
+                  <span>02</span>
+                  <h3>Peer learning</h3>
+                  <p>Learning from peers’ practical experiences and real work challenges.</p>
+                </div>
+                <div>
+                  <span>03</span>
+                  <h3>A better format</h3>
+                  <p>More structured than casual platforms like Clubhouse, while still open to everyone.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <section class="impact" id="closing">
+          <div class="impact__heading">
+            <span>Looking back</span>
+            <h2>A space to learn from each other.</h2>
+          </div>
+          <div class="impact__copy">
+            <p>Colearnla grew from one designer’s need into a community format that people kept coming back to.</p>
+          </div>
+          <ul class="impact__list">
+            <li><span>01</span>Create a space where UX designers learn from each other’s experiences</li>
+            <li><span>02</span>Connect more designers within the local UX community</li>
+          </ul>
+        </section>
+
+        <section class="next-project">
+          <p>Continue exploring</p>
+          <a href="testla.html">
+            <span>Next case study</span>
+            <strong>Testla</strong>
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </a>
+        </section>
+      </main>
+
+      <footer>
+        <p>Thanks for stopping by.</p>
+        <a href="mailto:phoebeyu.design@gmail.com">
+          Let’s make something meaningful.
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow diagonal"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+        </a>
+        <span>Product designer · 2026</span>
+      </footer>
+    </div>
+    <script>
+(function () {
+  var toggle = document.querySelector(".menu-toggle");
+  var menu = document.getElementById("main-menu");
+  function setOpen(open) {
+    toggle.classList.toggle("is-open", open);
+    menu.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+  toggle.addEventListener("click", function () { setOpen(!menu.classList.contains("is-open")); });
+  menu.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { setOpen(false); }); });
+
+  // YouTube: paste a link or video ID into data-youtube="" on a .video box.
+  document.querySelectorAll("[data-youtube]").forEach(function (box) {
+    var v = box.getAttribute("data-youtube").trim();
+    var m = v.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/);
+    var id = m ? m[1] : (/^[\w-]{11}$/.test(v) ? v : "");
+    if (!id) return; // keeps the "Video coming soon" placeholder
+    var f = document.createElement("iframe");
+    f.src = "https://www.youtube.com/embed/" + id + "?rel=0";
+    f.title = box.getAttribute("title") || "Video";
+    f.loading = "lazy";
+    f.allow = "autoplay; encrypted-media";
+    f.allowFullscreen = true;
+    box.innerHTML = "";
+    box.appendChild(f);
+  });
+})();
+    </script>
+  </body>
+</html>
