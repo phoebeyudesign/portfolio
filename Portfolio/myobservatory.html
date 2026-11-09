@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyObservatory · Phoebe Yu</title>
+    <meta name="description" content="Transforming a public weather platform into an actionable, citizen-focused experience. A case study by Phoebe Yu." />
+    <link rel="icon" type="image/png" href="AnalyticsImage/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="site">
+      <header class="site-header">
+        <a href="https://phoebeyudesign.github.io/portfolio/#top" class="avatar-link" aria-label="Phoebe Yu, home">
+          <img src="AnalyticsImage/phoebe-avatar.png" alt="" />
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu" aria-label="Open menu">
+          <span></span>
+          <span></span>
+        </button>
+        <nav id="main-menu" aria-label="Main navigation">
+          <a href="https://phoebeyudesign.github.io/portfolio/#top">Home</a>
+          <a href="snyk-analytics.html">Analytics</a>
+          <a href="https://phoebeyudesign.github.io/portfolio/#learn">Learn</a>
+          <a class="active" href="myobservatory.html">MyObservatory</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero">
+          <div class="hero__eyebrow reveal">
+            <span>Case study</span>
+            <span>Public service app · 2021</span>
+          </div>
+          <div class="hero__title reveal reveal--delay">
+            <h1>
+              Redesigning MyObservatory:
+              <br />
+              <em>weather you can act on.</em>
+            </h1>
+            <p>MyObservatory is one of Hong Kong’s most widely used public weather platforms, serving millions of residents who rely on it for real-time, location-specific decisions.</p>
+          </div>
+          <div class="hero__footer">
+            <a href="#overview" class="round-link" aria-label="Scroll to project overview">
+              <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+            <div class="hero__mark" aria-hidden="true">MYO</div>
+          </div>
+        </section>
+
+        <section class="overview" id="overview">
+          <div class="overview__intro">
+            <p class="kicker">MyObservatory overview</p>
+            <h2>Transforming a public weather platform into an actionable, citizen-focused experience.</h2>
+          </div>
+          <div class="overview__copy">
+            <p>I led research, problem definition, interaction design, and iterative prototyping.</p>
+            <p>I partnered with product, engineering, and meteorology teams to reframe the homepage around real user behaviours and reduce friction in accessing time-sensitive information.</p>
+          </div>
+          <dl class="meta meta--three">
+            <div>
+              <dt>Role</dt>
+              <dd>UI/UX Designer</dd>
+            </div>
+            <div>
+              <dt>Collaborators</dt>
+              <dd>Product Owner, Developers</dd>
+            </div>
+            <div>
+              <dt>Timeline</dt>
+              <dd>2021</dd>
+            </div>
+          </dl>
+        </section>
+
+        <aside class="contents" aria-label="On this page">
+          <span>On this page</span>
+          <div>
+            <a href="#brief"><span>01</span>The brief</a>
+            <a href="#problem"><span>02</span>The problem</a>
+            <a href="#research"><span>03</span>Research</a>
+            <a href="#jtbd"><span>04</span>Jobs-to-be-Done</a>
+            <a href="#principles"><span>05</span>Design principles</a>
+            <a href="#wireframe"><span>06</span>Wireframes</a>
+            <a href="#testing"><span>07</span>Prototyping &amp; testing</a>
+            <a href="#final"><span>08</span>Final design</a>
+          </div>
+        </aside>
+
+        <section class="statement">
+          <p>The outcome</p>
+          <h2>A high-visibility dashboard that <em>surfaces what matters.</em></h2>
+          <div class="statement__line"></div>
+          <p class="statement__detail">Urgent warnings and essential weather data at a glance, plus a new design system that reduced development overhead and sped up new features.</p>
+        </section>
+
+        <div class="narrative">
+          <section class="chapter" id="brief">
+            <div class="chapter__label">
+              <span>01</span>
+              <p>The brief</p>
+            </div>
+            <div class="chapter__body">
+              <h2>From a narrow ask to a strategic opportunity.</h2>
+              <blockquote>
+                “Redesign the homepage to give users faster access to rainfall products.”
+              </blockquote>
+              <p>I expanded this narrowly scoped ask into a more strategic opportunity: improving how citizens interpret weather information and make decisions in high-stakes moments.</p>
+            </div>
+          </section>
+
+          <section class="chapter" id="problem">
+            <div class="chapter__label">
+              <span>02</span>
+              <p>The problem</p>
+            </div>
+            <div class="chapter__body">
+              <h2>Critical information, buried.</h2>
+              <p class="lead">Many residents rely on MyObservatory for real-time weather alerts, but critical information was buried behind menus or masked by low-contrast UI.</p>
+              <p>Rainfall warnings, lightning alerts and favourite locations were hard to find, causing missed warnings and frustration, especially during urgent weather events.</p>
+              <figure class="figure figure--light">
+                <a href="MyObservatory/MyObservatory%20mobile%20app%27s%20original%20design%2C%20hard%20to%20scan.png" target="_blank" rel="noreferrer" aria-label="Open figure 1 at full size">
+                  <img src="MyObservatory/MyObservatory%20mobile%20app%27s%20original%20design%2C%20hard%20to%20scan.png" alt="MyObservatory mobile app’s original design, hard to scan" loading="lazy" />
+                  <span class="figure__open">View full size <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow diagonal"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+                <figcaption><span>Fig. 01</span>MyObservatory mobile app’s original design, hard to scan</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <section class="chapter" id="research">
+            <div class="chapter__label">
+              <span>03</span>
+              <p>Research</p>
+            </div>
+            <div class="chapter__body">
+              <h2>Three behavioural patterns.</h2>
+              <p class="lead">Through interviews, usage analysis and contextual inquiry, I uncovered three patterns that revealed why users were struggling.</p>
+              <div class="problem-grid">
+                <div>
+                  <span>01</span>
+                  <h3>Buried essentials</h3>
+                  <p>The 9-Day Forecast, lightning alerts and favourite locations were hidden or inconsistent, reducing trust in urgent conditions.</p>
+                </div>
+                <div>
+                  <span>02</span>
+                  <h3>Feature overload</h3>
+                  <p>Many tools were designed for expert meteorologists, not everyday citizens, creating noise and slowing comprehension.</p>
+                </div>
+                <div>
+                  <span>03</span>
+                  <h3>Low legibility</h3>
+                  <p>Photo backgrounds and light text weakened contrast, especially outdoors, making critical updates easy to miss.</p>
+                </div>
+              </div>
+              <div class="pullquote">
+                <span>Design decision</span>
+                <p>These patterns steered the team away from complex forecasting widgets that wouldn’t solve the real problem: helping people understand what action to take next.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="chapter" id="jtbd">
+            <div class="chapter__label">
+              <span>04</span>
+              <p>Jobs-to-be-Done</p>
+            </div>
+            <div class="chapter__body">
+              <h2>From insights to Jobs-to-be-Done.</h2>
+              <p class="lead">The behaviours were translated into JTBD that aligned product, engineering and meteorology teams.</p>
+              <div class="decision">
+                <div>
+                  <p class="kicker">Everyday</p>
+                  <h3>Journey and daily planning.</h3>
+                </div>
+                <ul>
+                  <li>
+                    <span>When</span>I’m planning my day or deciding whether to travel
+                    <em>I want to quickly understand what the weather means for my plans.</em>
+                  </li>
+                  <li>
+                    <span>So</span>I can make informed decisions
+                    <em>Go, delay, cancel or prepare, without digging through complex data.</em>
+                  </li>
+                </ul>
+              </div>
+              <div class="decision">
+                <div>
+                  <p class="kicker">Urgent</p>
+                  <h3>Responding to severe weather.</h3>
+                </div>
+                <ul>
+                  <li>
+                    <span>When</span>A weather warning is issued
+                    <em>I want clear, trustworthy and easy-to-verify information.</em>
+                  </li>
+                  <li>
+                    <span>So</span>I can respond confidently
+                    <em>And take the right actions to stay safe.</em>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="chapter" id="principles">
+            <div class="chapter__label">
+              <span>05</span>
+              <p>Design principles</p>
+            </div>
+            <div class="chapter__body">
+              <h2>Simple principles to keep everyone aligned.</h2>
+              <p>Based on stakeholder requirements and user interview insights, I created a set of simple design principles to guide decisions and keep the team and stakeholders aligned.</p>
+              <figure class="figure figure--light">
+                <a href="MyObservatory/Design%20principles%20illustration.png" target="_blank" rel="noreferrer" aria-label="Open figure 2 at full size">
+                  <img src="MyObservatory/Design%20principles%20illustration.png" alt="Design principles illustration" loading="lazy" />
+                  <span class="figure__open">View full size <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow diagonal"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+                <figcaption><span>Fig. 02</span>Design principles illustration</figcaption>
+              </figure>
+            </div>
+          </section>
+
+          <section class="chapter" id="wireframe">
+            <div class="chapter__label">
+              <span>06</span>
+              <p>Wireframes</p>
+            </div>
+            <div class="chapter__body">
+              <h2>Visualising solutions with stakeholders.</h2>
+              <p>I created wireframes to visualise solutions and collect stakeholder feedback.</p>
+              <figure class="figure figure--light">
+                <a href="MyObservatory/Wireframe%20feedback%20from%20stakeholders%2C%20compiled%20into%20presentation%20slides%20for%20documentation%20purposes.png" target="_blank" rel="noreferrer" aria-label="Open figure 3 at full size">
+                  <img src="MyObservatory/Wireframe%20feedback%20from%20stakeholders%2C%20compiled%20into%20presentation%20slides%20for%20documentation%20purposes.png" alt="Wireframe feedback from stakeholders, compiled into presentation slides" loading="lazy" />
+                  <span class="figure__open">View full size <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow diagonal"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+                <figcaption><span>Fig. 03</span>Wireframe feedback from stakeholders, compiled into presentation slides</figcaption>
+              </figure>
+              <h3 class="subhead">Stakeholder feedback</h3>
+              <ul class="list">
+                <li>Expected a few additional forecasting widgets.</li>
+                <li>Requested the chatbot remain always visible.</li>
+                <li>Preferred real-time location photos instead of illustrations.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="chapter" id="testing">
+            <div class="chapter__label">
+              <span>07</span>
+              <p>Prototyping &amp; testing</p>
+            </div>
+            <div class="chapter__body">
+              <h2>Testing with users and developers.</h2>
+              <p>I created a clickable prototype and ran iterative usability tests and design review sessions with developers.</p>
+              <figure class="figure figure--light">
+                <a href="MyObservatory/Prototype%20feedback%20from%20users%2C%20compiled%20into%20presentation%20slides%20for%20documentation%20purposes.png" target="_blank" rel="noreferrer" aria-label="Open figure 4 at full size">
+                  <img src="MyObservatory/Prototype%20feedback%20from%20users%2C%20compiled%20into%20presentation%20slides%20for%20documentation%20purposes.png" alt="Prototype feedback from users, compiled into presentation slides" loading="lazy" />
+                  <span class="figure__open">View full size <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow diagonal"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+                </a>
+                <figcaption><span>Fig. 04</span>Prototype feedback from users, compiled into presentation slides</figcaption>
+              </figure>
+              <div class="problem-grid problem-grid--two">
+                <div>
+                  <span>01</span>
+                  <h3>User feedback</h3>
+                  <p>Some weather terms were too technical. Many didn’t realise they could swipe horizontally. Users wanted quicker access to warnings and rainfall.</p>
+                </div>
+                <div>
+                  <span>02</span>
+                  <h3>Dev team feedback</h3>
+                  <p>Concern about mixing warnings with other shortcuts, and that too many images and data would affect app performance.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="chapter" id="final">
+            <div class="chapter__label">
+              <span>08</span>
+              <p>Final design</p>
+            </div>
+            <div class="chapter__body">
+              <h2>A cleaner, more legible dashboard.</h2>
+              <p>I also documented foundational patterns, including typography scale, contrast rules, iconography, component behaviours and responsive layout, giving the team a reusable structure it previously lacked.</p>
+              <ul class="list">
+                <li>A cleaner, more legible dashboard for quick scanning</li>
+                <li>Consistent warning hierarchy to support public safety</li>
+                <li>More accessible rainfall and environmental data</li>
+                <li>Simplified switching between locations</li>
+              </ul>
+              <figure class="figure figure--dark figure--video">
+                <div class="video">
+                  <!-- To add/change the video: paste the YouTube link into data-youtube="" below -->
+                  <div data-youtube="https://www.youtube.com/watch?v=ZyJcEa6rF3w" title="MyObservatory final design walkthrough"><p class="video-placeholder"><span><strong>Video coming soon</strong>Paste a YouTube link into data-youtube</span></p></div>
+                </div>
+                <figcaption><span>Fig. 05</span>MyObservatory final design walkthrough</figcaption>
+              </figure>
+            </div>
+          </section>
+
+        </div>
+
+        <section class="next-project">
+          <p>Continue exploring</p>
+          <a href="minigoal.html">
+            <span>Next case study</span>
+            <strong>MiniGoal</strong>
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+          </a>
+        </section>
+      </main>
+
+      <footer>
+        <p>Thanks for stopping by.</p>
+        <a href="mailto:phoebeyu.design@gmail.com">
+          Let’s make something meaningful.
+          <svg aria-hidden="true" viewBox="0 0 24 24" class="arrow diagonal"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+        </a>
+        <span>Product designer · 2026</span>
+      </footer>
+    </div>
+    <script src="site.js"></script>
+  </body>
+</html>
